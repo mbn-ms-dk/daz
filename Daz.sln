@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33706.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDaprApi", "SimpleDaprApi\SimpleDaprApi.csproj", "{04B5D05A-DADA-4536-8538-FBA12C66CEBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubConsole", "SubConsole\SubConsole.csproj", "{7CAD1BB2-E840-42E1-938F-9282DDB18278}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04B5D05A-DADA-4536-8538-FBA12C66CEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B5D05A-DADA-4536-8538-FBA12C66CEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B5D05A-DADA-4536-8538-FBA12C66CEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B5D05A-DADA-4536-8538-FBA12C66CEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CAD1BB2-E840-42E1-938F-9282DDB18278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAD1BB2-E840-42E1-938F-9282DDB18278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAD1BB2-E840-42E1-938F-9282DDB18278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAD1BB2-E840-42E1-938F-9282DDB18278}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20B155D9-90E8-470D-8466-A9BC57D87D0E}
+	EndGlobalSection
+EndGlobal
