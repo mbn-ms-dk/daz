@@ -129,7 +129,7 @@ app.MapPost("/addfile", async (IFormFile file, DaprClient client,bool? isLocal) 
     return operation;
 });
 
-//Delete file by id
+//Delete file by id (name)
 app.MapDelete("/files/{fileId}", async (string fileId, DaprClient client, bool? isLocal) =>
 {
     //use 'fleName' for local storage and 'blobName' for Azure Blob storage
