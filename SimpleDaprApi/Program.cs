@@ -134,7 +134,9 @@ app.MapDelete("/files/{fileId}", async (string fileId, DaprClient client, bool? 
 {
     //use 'fleName' for local storage and 'blobName' for Azure Blob storage
     var fileNameFormat = isLocal.GetValueOrDefault() ? "fileName" : "blobName";
-    await client.InvokeBindingAsync("files", "delete", $"{fileNameFormat}: {fileId}");
+    var req = new BindingRequest("files", "delete");
+    req.Metadata.Add(fileNameFormat, fileId);
+    await client.InvokeBindingAsync(req);
     //pub
     await client.PublishEventAsync<FilesEvent>("pubsub", "filetopic", new FilesEvent($"Deleted file {fileId}"));
     return Results.Ok($"File {fileId} is deleted");
