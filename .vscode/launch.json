@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Daz/SimpleDaprApi/bin/Debug/net6.0/SimpleDaprApi.dll",
+            "program": "${workspaceFolder}/Daz/SimpleDaprApi/bin/Debug/net7.0/SimpleDaprApi.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Daz/SimpleDaprApi",
             "stopAtEntry": false,

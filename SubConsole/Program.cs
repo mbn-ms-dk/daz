@@ -9,9 +9,14 @@ builder.Services.AddDaprClient();
 var app = builder.Build();
 app.UseCloudEvents();
 
-app.MapPost("/fileinfo", (string info, DaprClient client) =>
+// Subscribe to the topic
+app.MapPost("/fileinfo", (FilesEvent filesEvent, DaprClient client) =>
 {
-    Console.WriteLine(info);
-    return Results.Ok(info);
+    Console.WriteLine(filesEvent.Content);
+    return Results.Ok(filesEvent.Content);
 })
 .WithTopic("pubsub", "filetopic");
+
+app.Run();
+
+public record FilesEvent(string Content);
