@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: externalfilesblobstore
+spec:
+  type: bindings.azure.blobstorage
+  version: v1
+  metadata:
+    - name: storageAccount
+      value: "dazstorage"
+    - name: storageAccessKey
+      value: "gGsRsI88ERucoFwHZ1cuPWJeTjr1mbjiT8ud7ss68521WXJUUy7aGmJ6WCT4RQ0UR1P22dfRLL6J+ASthLyCAA=="
+    - name: container
+      value: "filescontainer"
+    - name: decodeBase64
+      value: false

@@ -1,0 +1,18 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore
+spec:
+  type: state.azure.cosmosdb
+  version: v1
+  metadata:
+    - name: url
+      value: https://dazcosmosdb.documents.azure.com:443/
+    - name: masterKey
+      value: "ZkustgUoXbXwSvOBMtxu4Q2PY1V9YaGefHu0UTM5vRInYAXDOyusjEadKFnZzDY6IHPtwKu3et0tACDbEJjE4Q=="
+    - name: database
+      value: dazdb
+    - name: collection
+      value: filescollection
+scopes:
+  - daz-backend-api

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Daz/SimpleDaprApi/SimpleDaprApi.csproj",
+                "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Daz/SimpleDaprApi/SimpleDaprApi.csproj",
+                "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,9 +33,82 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Daz/SimpleDaprApi/SimpleDaprApi.csproj"
+                "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "daz:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/Daz.Backend.Api/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "daz:latest",
+                "dockerfile": "${workspaceFolder}/Daz.Backend.Api/Dockerfile",
+                "context": "${workspaceFolder}",
+                "platform": "linux/amd64",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build: debug"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build: release"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/Daz.Backend.Api/Daz.Backend.Api.csproj"
+            }
+        },
+        {
+            "appId": "daz-backend-api",
+            "appPort": 7081,
+            "httpPort": 3500,
+            "grpcPort": 50001,
+            "appSsl": true,
+            "label": "backend-api-dapr-debug",
+            "type": "dapr",
+            "dependsOn": "filesmanager-backend-api", 
+            "componentsPath" : "./components"
+        },
+        {
+            "appId": "daz-backend-api",
+            "label": "daprd-down-backend-api",
+            "type": "daprd-down",
         }
     ]
 }
